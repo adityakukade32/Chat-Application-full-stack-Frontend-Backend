@@ -1,4 +1,4 @@
-import Message from "../models/Message.js"; // ✅ Was wrongly importing User model
+import Message from "../models/message.js";// ✅ Was wrongly importing User model
 import User from "../models/User.js";
 import cloudinary from "../lib/cloudinary.js";
 import { io, userSocketMap } from "../server.js";
