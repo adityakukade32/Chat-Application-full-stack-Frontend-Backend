@@ -37,12 +37,17 @@ app.use("/api/status", (req, res) => res.send("Server is live"));
 app.use("/api/auth", userRouter);
 app.use("/api/messages", messageRouter);
 
-const PORT = process.env.PORT || 8000;
 (async () => {
     try {
         await connectDB();
-        server.listen(PORT, () => console.log("Server is running on PORT: " + PORT));
+        if (process.env.NODE_ENV !== "production") {
+            const PORT = process.env.PORT || 8000;
+            server.listen(PORT, () => console.log("Server is running on PORT: " + PORT));
+
+        }
     } catch (error) {
         console.error("Failed to start server:", error);
     }
 })();
+
+export default server
